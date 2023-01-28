@@ -1,18 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { randomBytes } = require('crypto');
+const cors = require('cors')
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors())
 
 const commentByPostId = {}
 
-app.get('/post/:id/comments', (request, response) => {
+app.get('/posts/:id/comments', (request, response) => {
 
-  response.send(commentByPostId[request.params.id] || 'No data provided')
+  response.send(commentByPostId[request.params.id] || [])
 });
 
-app.post('/post/:id/comments', (request, response) => {
+app.post('/posts/:id/comments', (request, response) => {
   const commentId = randomBytes(4).toString('hex');
   const { content } = request.body
   const comments = commentByPostId[request.params.id] || []
