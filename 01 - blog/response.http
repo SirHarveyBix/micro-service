@@ -1,0 +1,24 @@
+# you need : REST Client => https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+# to make this file works
+###
+
+GET http://localhost:4000/posts 
+###
+POST http://localhost:4000/posts  HTTP/1.1
+Content-Type: application/json
+
+{
+"title" : "barely a post"
+}
+###
+
+GET http://localhost:4001/post/456/comments
+###
+POST http://localhost:4001/post/456/comments  HTTP/1.1
+Content-Type: application/json
+
+{
+"content" : "this won't be a comment"
+}
+###
+
