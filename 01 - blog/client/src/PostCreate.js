@@ -15,7 +15,7 @@ const PostCreate = () => {
   };
 
   return (
-    <div>
+    <>
       <form onSubmit={onSubmit}>
         <div className="form-group">
           <label>Title</label>
@@ -27,7 +27,7 @@ const PostCreate = () => {
         </div>
         <button className="btn btn-primary">Submit</button>
       </form>
-    </div>
+    </>
   );
 };
 

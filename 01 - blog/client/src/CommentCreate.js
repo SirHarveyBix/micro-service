@@ -15,7 +15,7 @@ const CommentCreate = ({ postId }) => {
   };
 
   return (
-    <div>
+    <>
       <form onSubmit={onSubmit}>
         <div className="form-group">
           <label>New Comment</label>
@@ -27,7 +27,7 @@ const CommentCreate = ({ postId }) => {
         </div>
         <button className="btn btn-primary">Submit</button>
       </form>
-    </div>
+    </>
   );
 };
 

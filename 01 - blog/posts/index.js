@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const { randomBytes } = require('crypto');
 const cors = require('cors')
 
+const PORT = 4000
+
 const app = express();
 app.use(bodyParser.json());
 app.use(cors())
@@ -23,6 +25,6 @@ app.post('/posts', (request, response) => {
   response.status(201).send(posts[id]);
 });
 
-app.listen(4000, () => {
-  console.info('Listening on 4000');
+app.listen(PORT, () => {
+  console.info(`Listening on ${PORT}`);
 });
