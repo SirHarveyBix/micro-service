@@ -21,7 +21,7 @@ const CommentCreate = ({ postId }) => {
           <label>New Comment</label>
           <input
             value={content}
-            onChange={(e) => setContent(e.target.value)}
+            onChange={(event) => setContent(event.target.value)}
             className="form-control"
           />
         </div>
