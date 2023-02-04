@@ -19,19 +19,30 @@ app.post('/events', (request, response) => {
 
   if (type === 'PostCreated') {
     const { id, title } = data;
+
     posts[id] = { id, title, comments: [] };
   }
 
   if (type === 'CommentCreated') {
-    const { id, content, postId } = data;
+    const { id, content, postId, status } = data;
     const post = posts[postId];
-    post.comments.push({ id, content });
+
+    post.comments.push({ id, content, status });
   }
 
-  console.info('posting :\n', posts);
+  if (type === 'CommentUpdated') {
+    const { id, content, postId, status } = data;
+    const post = posts[postId];
+    const comment = post.comments.find((comment) => comment.id === id);
+
+    comment.status = status;
+    comment.content = content;
+  }
+
+  console.info('posted :\n', posts);
   response.send({});
 });
 
 app.listen(PORT, () => {
-  console.info(`Listening on ${PORT} as`, "\x1b[31m\x1b[1m", "Query");
+  console.info(`Listening on ${PORT} as`, '\x1b[31m\x1b[1mQuery\033[m');
 });

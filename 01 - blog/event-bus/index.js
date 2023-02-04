@@ -6,7 +6,6 @@ const PORT = 4005;
 
 const app = express();
 app.use(bodyParser.json());
-// app.use(cors());
 
 app.post('/events', (request, response) => {
   const event = request.body;
@@ -26,9 +25,14 @@ app.post('/events', (request, response) => {
     .post('http://localhost:4002/events', event)
     .catch((error) => console.error(error.message));
 
+  // moderation
+  axios
+    .post('http://localhost:4003/events', event)
+    .catch((error) => console.error(error.message));
+
   response.send({ status: 'OK' });
 });
 
 app.listen(PORT, () => {
-  console.info(`Listening on ${PORT} as`, "\x1b[31m\x1b[1m", "Event Bus");
+  console.info(`Listening on ${PORT} as`, '\x1b[31m\x1b[1mEvent Bus\033[m');
 });
