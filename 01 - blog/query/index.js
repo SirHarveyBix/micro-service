@@ -33,5 +33,5 @@ app.post('/events', (request, response) => {
 });
 
 app.listen(PORT, () => {
-  console.info(`Listening on ${PORT}`);
+  console.info(`Listening on ${PORT} as`, "\x1b[31m\x1b[1m", "Query");
 });
