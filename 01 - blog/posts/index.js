@@ -37,10 +37,10 @@ app.post('/posts', async (request, response) => {
 });
 
 app.post('/events', (request, response) => {
-  console.info('Received Event : ', request.body.type);
+  console.info('\x1b[31mPosts\033[m Received Event :', request.body.type);
   response.send({});
 });
 
 app.listen(PORT, () => {
-  console.info(`Listening on ${PORT} as`, "\x1b[31m\x1b[1m", "Posts");
+  console.info(`Listening on ${PORT} as`, '\x1b[31m\x1b[1mPosts\033[m');
 });
