@@ -18,5 +18,8 @@ Ex: `docker build -t posts ./posts`  suivi par `docker run posts`
 
 note: le service 'Query' depend de event-bus, il ne pourra etre executé que si event-bus est lancé.
 
+concernant l'orchestration des service avec kubernetes voir le dossier : [infra](./infra/k8s/)
+
 vous avez une source documentaire concernant les routes possible : [response.http](./response.http)
+
 vous aurez besoin de l'extention [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) (VScode) pour lancer ces routes depuis votre IDE preferé
