@@ -15,7 +15,8 @@ app.post('/events', (request, response) => {
 
   // posts
   axios
-    .post('http://localhost:4000/events', event)
+    // .post('http://localhost:4000/events', event)
+    .post('http://posts-clusterip-srv:4000/events', event)
     .catch((error) => console.error(error.message));
 
   // comments
@@ -36,7 +37,7 @@ app.post('/events', (request, response) => {
   response.send({ status: 'OK' });
 });
 
-app.get('/events', (request, response) => {
+app.get('/events', (_request, response) => {
   response.send(events);
 });
 
