@@ -28,5 +28,5 @@ POST http://localhost:30831/posts  HTTP/1.1
 Content-Type: application/json
 
 {
-"title" : "barely a post"
+"title" : "orange"
 }
