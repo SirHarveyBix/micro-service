@@ -8,9 +8,11 @@ const PostList = () => {
 
   const fetchPosts = async () => {
     // posts service est remplacé par query service
-    const res = await axios.get("http://localhost:4002/posts");
 
-    setPosts(res.data);
+    // const response = await axios.get("http://localhost:4002/posts");
+    const response = await axios.get('http://posts.com/posts');
+
+    setPosts(response.data);
   };
 
   useEffect(() => {

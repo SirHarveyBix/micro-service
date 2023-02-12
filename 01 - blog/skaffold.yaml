@@ -1,0 +1,67 @@
+apiVersion: skaffold/v3
+kind: Config
+
+deploy:
+  kubectl: {}
+manifests:
+  rawYaml:
+    - ./infra/k8s/*
+
+build:
+  local:
+    push: false
+
+  artifacts:
+    - image: sirharvey/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "src/**/*.js"
+
+    - image: sirharvey/comments
+      context: comments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "*.js"
+
+    - image: sirharvey/event-bus
+      context: event-bus
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "*.js"
+
+    - image: sirharvey/moderation
+      context: moderation
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "*.js"
+
+    - image: sirharvey/posts
+      context: posts
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "*.js"
+
+    - image: sirharvey/query
+      context: query
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "*.js"

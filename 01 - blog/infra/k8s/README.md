@@ -22,7 +22,7 @@
 
 - `kubectl delete deployment posts` supprime le deployment concerné
 
-pour creer l'image et la pousser sur le [Docker hub](https://hub.docker.com/), il est import de mentionner son dockerID : [`docker build -t sirharvey/posts .`](https://hub.docker.com/repository/docker/sirharvey/posts/general),ensuite : `docker push sirharvey/posts`
+pour creer l'image et la pousser sur le [Docker hub](https://hub.docker.com/), il est import de mentionner son dockerID : [`docker build -t sirharvey/posts .`](https://hub.docker.com/repository/docker/sirharvey/posts/general), ensuite : `docker push sirharvey/posts`
 
 restart deployment : `kubectl rollout restart deployment posts-deploy`
 il est toujours possible de retrouver tout ses deployments `kubectl get deployments`
