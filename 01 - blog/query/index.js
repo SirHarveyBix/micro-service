@@ -49,7 +49,7 @@ app.listen(PORT, async () => {
   try {
     const response = await axios.get(
       // 'http://localhost:4005/events' /*event-bus*/
-      'http://envent-bus-srv:4005/events'
+      'http://event-bus-srv:4005/events'
     );
     response.data.forEach((event) => {
       console.info(' \x1b[31mQuery\033[m Processing event :', event.type);
