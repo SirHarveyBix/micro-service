@@ -45,5 +45,10 @@ dans tout les cas vous aurez besoin de cette commande :
 
 - `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.5.1/deploy/static/provider/cloud/deploy.yaml` : [Doc](https://kubernetes.github.io/ingress-nginx/deploy/)
 
-vous auraez besoin etonnement de changer votre fichier hosts (/ect/hosts pour mac) en ajoutant cette ligne : `127.0.0.1 posts.com` qui fait reference a `- host: posts.com` du fichier [ingress.server.yaml](./infra/k8s/ingress.server.yaml)
+
+vous pouvez aussi utiliser skaffold, si il ets installé, `skaffold dev`.
+
+vous aurez besoin etonnement de changer votre fichier hosts (/ect/hosts pour mac) en ajoutant cette ligne : `127.0.0.1 posts.com` qui fait reference a `- host: posts.com` du fichier [ingress.server.yaml](./infra/k8s/ingress.server.yaml)
 __attention__ www.posts.com (le site web) ne sera plus accessible.
+
+
