@@ -2,5 +2,10 @@
 # to make this file works
 ###
 
-GET http://localhost:3000/api/users/currentuser
-###
+POST http://ticketing.dev/api/users/signup HTTP/1.1
+content-type: application/json
+
+{
+  "email": "444@test.com",
+  "password": "dddddddz"
+}
