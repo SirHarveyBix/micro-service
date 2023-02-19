@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import { CustomError } from '../errors/abstract-custom-error';
 
 export const errorHandler = (
   error: Error,
@@ -6,5 +7,17 @@ export const errorHandler = (
   response: Response,
   next: NextFunction
 ) => {
-  response.status(400).send({ message: 'Nope, not working.' });
+  if (error instanceof CustomError) {
+    return response
+      .status(error.statusCode)
+      .send({ errors: error.serializeError() });
+  }
+
+  response.status(400).send({
+    errors: [
+      {
+        message: error.message,
+      },
+    ],
+  });
 };
