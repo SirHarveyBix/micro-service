@@ -5,6 +5,8 @@ import {
   body,
   validationResult,
 } from 'express-validator';
+import jwt from 'jsonwebtoken';
+
 import { User } from '../models/user';
 import { RequestValidationError } from '../errors/request-validation.error';
 import { BadRequestError } from '../errors/bad-request.error';
@@ -33,11 +35,16 @@ router.post(
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
-      throw new BadRequestError('This eamil is already in use.');
+      throw new BadRequestError('This e-mail is already in use.');
     }
 
     const user = User.build({ email, password });
     await user.save();
+
+    // generate JWT
+    const userJwt = jwt.sign({ id: user.id, email: user.email }, 'asdf');
+    //store on sesion object
+    request.session = { jwt: userJwt };
 
     response.status(201).send(user);
   }
