@@ -2,14 +2,12 @@ import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
 import { app } from '../app';
 
-import { beforeAll, beforeEach, afterAll } from 'jest-circus';
-
-let mongo: MongoMemoryServer;
+const mongo = MongoMemoryServer.create();
 
 beforeAll(async () => {
-  mongo = await MongoMemoryServer.create();
-  const mongoUri = mongo.getUri();
-
+  process.env.JWT_KEY = 'test';
+  const mongoUri = (await mongo).getUri();
+  mongoose.set('strictQuery', true);
   await mongoose.connect(mongoUri, {});
 });
 
@@ -23,7 +21,7 @@ beforeEach(async () => {
 
 afterAll(async () => {
   if (mongo) {
-    await mongo.stop();
+    await (await mongo).stop();
   }
   await mongoose.connection.close();
 });
