@@ -10,8 +10,8 @@ content-type: application/json
   "email": "666@deamon.hell",
   "password": "NotDead333"
 }
-###
 
+###
 POST https://ticketing.dev/api/users/signin HTTP/1.1
 content-type: application/json
 
@@ -20,3 +20,5 @@ content-type: application/json
   "password": "NotDead333"
 }
 
+###
+GET https://ticketing.dev/api/users/currentuser 
