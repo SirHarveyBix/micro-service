@@ -1,11 +1,25 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 export default () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState([]);
 
-  const onSubmit = (event: { preventDefault: () => void }) => {
+  const onSubmit = async (event: { preventDefault: () => void }) => {
     void event.preventDefault();
+
+    const response = await axios
+      .post('/api/users/signup', {
+        email,
+        password,
+      })
+
+      .catch((error) => {
+        setErrors(error.response.data.errors);
+      });
+
+    console.log('%csignup.tsx line:21 response', 'color: #3f88b8;', response);
   };
 
   return (
