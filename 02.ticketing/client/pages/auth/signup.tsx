@@ -1,25 +1,21 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import useRequest, { METHOD } from '../../hooks/useRequest';
+import Router from 'next/router';
 
 export default () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState([]);
+
+  const { doRequest, errors } = useRequest({
+    url: '/api/users/signup',
+    method: METHOD.POST,
+    body: { email, password },
+    onSuccess: () => Router.push('/'),
+  });
 
   const onSubmit = async (event: { preventDefault: () => void }) => {
     void event.preventDefault();
-
-    const response = await axios
-      .post('/api/users/signup', {
-        email,
-        password,
-      })
-
-      .catch((error) => {
-        setErrors(error.response.data.errors);
-      });
-
-    console.log('%csignup.tsx line:21 response', 'color: #3f88b8;', response);
+    await doRequest();
   };
 
   return (
@@ -33,7 +29,6 @@ export default () => {
           className="form-control"
         />
       </div>
-
       <div className="form-group">
         <label>Password</label>
         <input
@@ -43,6 +38,7 @@ export default () => {
           className="form-control"
         />
       </div>
+      {errors}
       <button className="btn btn-primary">Sign Up</button>
     </form>
   );
