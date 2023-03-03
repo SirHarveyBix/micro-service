@@ -1,7 +1,26 @@
+import { NextPageContext } from 'next/types';
 import React from 'react';
+import buildClient from '../api/buildClient';
 
-const Landing = () => {
-  return <h1>Landing Page</h1>;
+interface CurrentUserI {
+  email?: string;
+  id?: string;
+  iat?: string;
+}
+
+const LandingPage = ({ currentUser }: { currentUser: CurrentUserI }) => {
+  return currentUser ? (
+    <h1>You are signed in !</h1>
+  ) : (
+    <h1>You are NOT signed in !</h1>
+  );
 };
 
-export default Landing;
+LandingPage.getInitialProps = async (context: NextPageContext) => {
+  const client = buildClient(context);
+  const { data } = await client.get('/api/users/currentuser');
+
+  return data;
+};
+
+export default LandingPage;
