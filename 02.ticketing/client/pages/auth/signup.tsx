@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import useRequest, { METHOD } from '../../hooks/useRequest';
 import Router from 'next/router';
 
-export default () => {
+export default (): JSX.Element => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -13,7 +13,9 @@ export default () => {
     onSuccess: () => Router.push('/'),
   });
 
-  const onSubmit = async (event: { preventDefault: () => void }) => {
+  const onSubmit = async (event: {
+    preventDefault: () => void;
+  }): Promise<void> => {
     void event.preventDefault();
     await doRequest();
   };

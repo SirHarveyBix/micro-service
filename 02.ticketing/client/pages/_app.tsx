@@ -3,9 +3,10 @@ import React from 'react';
 import type { AppContext, AppProps } from 'next/app';
 import buildClient from '../api/buildClient';
 import Header from '../components/header';
+import { CurrentUserI } from '../types/user-interface';
 
 interface CustomAppProps extends AppProps {
-  currentUser: { email: string };
+  currentUser: CurrentUserI;
 }
 
 const AppComponent = ({

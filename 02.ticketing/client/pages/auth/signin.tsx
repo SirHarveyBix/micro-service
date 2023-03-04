@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import useRequest, { METHOD } from '../../hooks/useRequest';
 import Router from 'next/router';
 
-export default () => {
+export default (): JSX.Element => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
