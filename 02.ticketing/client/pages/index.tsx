@@ -1,12 +1,7 @@
 import { NextPageContext } from 'next/types';
 import React from 'react';
 import buildClient from '../api/buildClient';
-
-interface CurrentUserI {
-  email?: string;
-  id?: string;
-  iat?: string;
-}
+import { CurrentUserI } from '../types/user-interface';
 
 const LandingPage = ({ currentUser }: { currentUser: CurrentUserI }) => {
   return currentUser ? (

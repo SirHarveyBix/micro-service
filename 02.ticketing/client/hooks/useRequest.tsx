@@ -1,25 +1,32 @@
 import React, { useState } from 'react';
 import axios, { AxiosResponse } from 'axios';
+import { UserI } from '../types/user-interface';
 
 interface useRequestProps {
   url: string;
   method: METHOD;
-  body: BodyProperties;
+  body?: UserI;
   onSuccess: (response: AxiosResponse) => void;
 }
 
-interface BodyProperties {
-  email?: string;
-  password?: string;
+interface UseRequestI {
+  doRequest: () => Promise<void>;
+  errors: JSX.Element | null;
 }
 
 export enum METHOD {
   POST = 'post',
   GET = 'get',
+  PUT = 'put',
 }
 
-export default ({ url, method, body, onSuccess }: useRequestProps) => {
-  const [errors, setErrors] = useState<null | JSX.Element>(null);
+export default ({
+  url,
+  method,
+  body,
+  onSuccess,
+}: useRequestProps): UseRequestI => {
+  const [errors, setErrors] = useState<UseRequestI['errors']>(null);
 
   const doRequest = async () => {
     await axios[method](url, body)

@@ -1,11 +1,7 @@
-import { link } from 'fs/promises';
 import Link from 'next/link';
+import { CurrentUserI } from '../types/user-interface';
 
-interface CurrentUser {
-  email: string;
-}
-
-export default ({ currentUser }: { currentUser: CurrentUser }) => {
+export default ({ currentUser }: { currentUser: CurrentUserI }) => {
   const links = [
     {
       show: !currentUser,
