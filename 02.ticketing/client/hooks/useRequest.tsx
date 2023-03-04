@@ -9,8 +9,8 @@ interface useRequestProps {
 }
 
 interface BodyProperties {
-  email: string;
-  password: string;
+  email?: string;
+  password?: string;
 }
 
 export enum METHOD {
