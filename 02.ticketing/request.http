@@ -2,7 +2,10 @@
 # to make this file works
 # remember : edit your hosts file : 127.0.0.1 ticketing.dev
 ###
+### Signout Out
+POST https://ticketing.dev/api/users/signout
 
+### Sign Up
 POST https://ticketing.dev/api/users/signup HTTP/1.1
 content-type: application/json
 
@@ -11,7 +14,7 @@ content-type: application/json
   "password": "NotDead333"
 }
 
-###
+### Sign In
 POST https://ticketing.dev/api/users/signin HTTP/1.1
 content-type: application/json
 
@@ -20,8 +23,29 @@ content-type: application/json
   "password": "NotDead333"
 }
 
-###
+### get current user
 GET https://ticketing.dev/api/users/currentuser
 
-###
-POST https://ticketing.dev/api/users/signout
+### create ticket
+POST https://ticketing.dev/api/tickets HTTP/1.1
+content-type: application/json
+
+{
+  "title": "concert",
+  "price": 18
+}
+
+### get specific ticket : id from ticket just created
+GET https://ticketing.dev/api/tickets/6404e710b669fc9b72e72111
+
+### get all tickets 
+GET https://ticketing.dev/api/tickets/
+
+### update ticket : id from any ticket created
+PUT https://ticketing.dev/api/tickets/6404e710b669fc9b72e72111 HTTP/1.1
+content-type: application/json
+
+{
+  "title": "gig",
+  "price": 185
+}
