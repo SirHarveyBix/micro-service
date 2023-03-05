@@ -1,24 +1,6 @@
 import React, { useState } from 'react';
-import axios, { AxiosResponse } from 'axios';
-import { UserI } from '../types/user-interface';
-
-interface useRequestProps {
-  url: string;
-  method: METHOD;
-  body?: UserI;
-  onSuccess: (response: AxiosResponse) => void;
-}
-
-interface UseRequestI {
-  doRequest: () => Promise<void>;
-  errors: JSX.Element | null;
-}
-
-export enum METHOD {
-  POST = 'post',
-  GET = 'get',
-  PUT = 'put',
-}
+import axios from 'axios';
+import { UseRequestI, useRequestProps } from './types';
 
 export default ({
   url,

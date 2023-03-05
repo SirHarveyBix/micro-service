@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import useRequest, { METHOD } from '../../hooks/useRequest';
+import useRequest from '../../hooks/useRequest';
 import Router from 'next/router';
+import { METHOD } from '../../hooks/types';
 
 export default (): JSX.Element => {
   const { doRequest } = useRequest({

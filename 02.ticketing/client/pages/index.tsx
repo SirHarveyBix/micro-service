@@ -1,9 +1,11 @@
-import { NextPageContext } from 'next/types';
+import { NextPage, NextPageContext } from 'next/types';
 import React from 'react';
 import buildClient from '../api/buildClient';
 import { CurrentUserI } from '../types/user-interface';
 
-const LandingPage = ({ currentUser }: { currentUser: CurrentUserI }) => {
+const LandingPage: NextPage<{ currentUser: CurrentUserI }> = ({
+  currentUser,
+}) => {
   return currentUser ? (
     <h1>You are signed in !</h1>
   ) : (
