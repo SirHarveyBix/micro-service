@@ -22,6 +22,8 @@ spec:
                 secretKeyRef:
                   key: JWT_KEY
                   name: jwt-secret
+            - name: MONGO_URI
+              value: "mongodb://auth-mongo-service:27017/tickets"
           # resources:
           #   limits:
           #     memory: 512Mi
