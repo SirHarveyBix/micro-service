@@ -2,8 +2,11 @@ import express from 'express';
 import 'express-async-errors';
 import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
-import { errorHandler, NotFoundError } from '@sh-ticket/common';
+import { currentUser, errorHandler, NotFoundError } from '@sh-ticket/common';
 import { createTicketRouter } from './routes/new';
+import { showTicketRouter } from './routes/show';
+import { indexTicketRouter } from './routes';
+import { updateTickerRouter } from './routes/update';
 
 const app = express();
 
@@ -16,7 +19,12 @@ app.use(
   })
 );
 
+app.use(currentUser);
+
 app.use(createTicketRouter);
+app.use(showTicketRouter);
+app.use(indexTicketRouter);
+app.use(updateTickerRouter);
 
 app.all('*', async (_request, _response) => {
   throw new NotFoundError();
